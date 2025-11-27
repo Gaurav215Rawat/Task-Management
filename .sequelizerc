@@ -1,0 +1,11 @@
+// .sequelizerc (CommonJS)
+const path = require('path');
+
+module.exports = {
+  // Point the CLI to the new config file
+  'config': path.resolve(__dirname, 'sequelizeConfig.js'),
+  
+  // The CLI will now read the paths from sequelizeConfig.js, but keep these for safety
+  'models-path': path.resolve(__dirname, 'src/models'),
+  'migrations-path': path.resolve(__dirname, 'src/migrations'),
+};
