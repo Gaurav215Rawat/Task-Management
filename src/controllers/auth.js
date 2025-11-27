@@ -49,7 +49,7 @@ const login = async (req, res) => {
       sessionKey,
       token,
       "EX",
-      Number(process.env.CACHE_TTL || 3600)
+      Number(process.env.CACHE_TTL || 60)
     );
 
     return res.json({ token });

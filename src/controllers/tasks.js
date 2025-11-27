@@ -34,7 +34,7 @@ const getTasks = async (req, res) => {
       key,
       JSON.stringify(tasks),
       "EX",
-      Number(process.env.CACHE_TTL || 600)
+      Number(process.env.CACHE_TTL || 60)
     );
 
     return res.json(tasks);

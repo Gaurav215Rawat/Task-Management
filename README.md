@@ -7,11 +7,12 @@ A robust Task Management REST API built with Node.js, Express, PostgreSQL, and R
 - **User Authentication**: Secure registration and login using JWT and bcrypt.
 - **Task Management**: Create, read, update, and delete tasks.
 - **Database**: Persistent storage using PostgreSQL with Sequelize ORM.
-- **Caching**: Redis integration for caching task data to reduce database load.
+- **Caching**: Redis integration for caching task data to reduce database load (Default TTL: 60s).
 - **Security**:
     -   Password hashing.
     -   Protected routes.
-    -   **Rate Limiting**: Login attempts are limited to prevent brute-force attacks.
+    -   **Rate Limiting**: Login attempts are limited to 10 per minute.
+    -   **Short-lived Sessions**: Tokens and cache expire in 60 seconds by default for enhanced security.
 -   **Input Validation**: Robust data validation using Zod schemas.
 
 ## Prerequisites
@@ -27,8 +28,8 @@ Before you begin, ensure you have the following installed on your machine:
 1.  **Clone the repository:**
 
     ```bash
-    git clone <repository-url>
-    cd ass
+    git clone <https://github.com/Gaurav215Rawat/Task-Management.git>
+    cd Task-Management
     ```
 
 2.  **Install dependencies:**
@@ -43,12 +44,16 @@ Before you begin, ensure you have the following installed on your machine:
 
     ```env
     PORT=3000
-    DATABASE_URL=postgres://username:password@localhost:5432/database_name
+    DATABASE_URL=postgres://<username>:<password>@localhost:5432/<database_name>
     REDIS_HOST=127.0.0.1
     REDIS_PORT=6379
-    REDIS_PASSWORD=your_redis_password_if_any
-    JWT_SECRET=your_super_secret_jwt_key
+    REDIS_PASSWORD=<your_redis_password>
+    JWT_SECRET=<your_jwt_secret>
     NODE_ENV=development
+    
+    # Expiration Settings (Defaults to 60s if not set)
+    JWT_EXPIRES_IN=60s
+    CACHE_TTL=60
     ```
 
     *Note: Ensure your PostgreSQL database is created and accessible via the `DATABASE_URL`.*
@@ -92,6 +97,17 @@ This project uses Sequelize for database management.
     The server will start on the port specified in your `.env` file (default: 3000).
 
 ## API Endpoints
+
+### Testing with Postman
+
+A Postman collection is included in the repository to help you test the API endpoints easily.
+
+1.  **Open Postman**.
+2.  **Click "Import"** in the top left corner.
+3.  **Drag and drop** the `Task Management.postman_collection.json` file (located in the root directory) into the import window.
+4.  **Configure Environment**:
+    -   The collection may use variables like `{{base_url}}` (e.g., `http://localhost:3000`) or `{{token}}`.
+    -   Ensure you update these variables in Postman or replace them with your actual values.
 
 ### Authentication
 

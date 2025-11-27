@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "703123fd-d4e5-4d52-9b53-258e071ca38d",
+		"name": "Task Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40170495",
+		"_collection_link": "https://who-he-remains.postman.co/workspace/Task-Management~aeb6bac7-e297-464c-88e2-c3f5550d6f1d/collection/40170495-703123fd-d4e5-4d52-9b53-258e071ca38d?action=share&source=collection_link&creator=40170495"
+	},
+	"item": [
+		{
+			"name": "User Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"Password123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"Password123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzY0MjE3ODI0LCJleHAiOjE3NjQyMjUwMjR9.y8X3c55M6yK0r3ntOx8aycT1N03UIAhvGobTak2mVvM"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Finish Assignment Review\",\r\n    \"status\": \"in_progress\" \r\n}"
+						},
+						"url": "http://localhost:3000/auth/logout"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task management",
+			"item": [
+				{
+					"name": "All task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzY0MTc1NzgxLCJleHAiOjE3NjQxODI5ODF9.tEd0992hDRkQ_ezp7B4tP1CyTisx75G9cSOkIKQn6F8"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "Add new Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzY0MjE3NDY1LCJleHAiOjE3NjQyMjQ2NjV9.KfRnAzq7gxlm6wGyPSlWYJQfDb-QKDWzeAP_tUhb7dE"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"title\":\"Add new Task\",\r\n \"description\":\"description abot new task\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "update task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzY0MjE3NzI5LCJleHAiOjE3NjQyMjQ5Mjl9.UAzcJFx5tv20KvFX-ERjcBfMn_pgNYUWjuEKmLMlESo"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Finish Assignment Review\",\r\n    \"status\": \"in_progress\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/tasks/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzY0MjE3ODI0LCJleHAiOjE3NjQyMjUwMjR9.y8X3c55M6yK0r3ntOx8aycT1N03UIAhvGobTak2mVvM"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Finish Assignment Review\",\r\n    \"status\": \"in_progress\" \r\n}"
+						},
+						"url": "http://localhost:3000/tasks/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
